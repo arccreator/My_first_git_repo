@@ -1,0 +1,30 @@
+git如何merge github forked repository里的代码更新?
+发表于 2011/08/20
+
+问题是这样的，github里有个项目ruby-gmail，我需要从fork自同一个项目的另一个repository拿一些Bug Fix的代码
+link1：https://github.com/dcparker/ruby-gmail （原作者dcparker的repository）
+link2：https://github.com/jihao/ruby-gmail （我从link1 fork的repository）
+link3：https://github.com/geoffyoungs/ruby-gmail （geoffyoungs 从link1 fork的repository，然后他有些Bug修改，但是没被merge回原作者的link1的repository）
+
+也就我git clone repository到本地后，发现link3有我想要的代码，我要把link3上的改动merge到我的repository上，避免我花精力改相同的bug
+
+git如何merge github forked repository里的更新?
+具体做法是下面三步，以前没用git这么搞过，知道之后其实蛮简单
+1. >git remote add geoffyoungs http://github.com/geoffyoungs/ruby-gmail.git
+2. >git fetch geoffyoungs
+3. >git merge geoffyoungs/master
+
+本地的repository看上去是这样的：
+>git remote -v
+geoffyoungs http://github.com/geoffyoungs/ruby-gmail.git (fetch)
+geoffyoungs http://github.com/geoffyoungs/ruby-gmail.git (push)
+origin http://jihao@github.com/jihao/ruby-gmail.git (fetch)
+origin http://jihao@github.com/jihao/ruby-gmail.git (push)
+>git branch -a
+* master
+remotes/geoffyoungs/gh-pages
+remotes/geoffyoungs/master
+remotes/origin/HEAD -> origin/master
+remotes/origin/adimircolen-master
+remotes/origin/gh-pages
+remotes/origin/master
